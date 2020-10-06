@@ -1,2 +1,2 @@
 # Algorithm
-Practicing Algorithms &amp; Data Structures
+Practicing Algorithms &amp; Data Structures.
