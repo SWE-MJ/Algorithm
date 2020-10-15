@@ -26,6 +26,6 @@ var minPathSum = function(grid) {
             grid[col][row] += Math.min(left,top)
         }
     }
-    
+    3
     return grid[colLength][rowLength]
 };
