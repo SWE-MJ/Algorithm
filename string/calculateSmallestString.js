@@ -6,37 +6,33 @@ const calculateSmallestString = (planConfig, displayStr) => {
 
     if (planConfig.length % displayStr.length  !== 0 ) return -1;
 
-    const findSmallestString = (displayStr) => {
-        let saved = ''
-        for(let i = 0; i < displayStr.length; i++) {
-            let repetitiveString = displayStr.slice(0,i);
-            //console.log('repetitiveString: ', repetitiveString);
-            let pointer = i;
-            while(pointer < displayStr.length && repetitiveString !== '') {
-                //console.log(displayStr.slice(pointer, pointer + i))
-                if(repetitiveString !== displayStr.slice(pointer, pointer + i)) {
-                    //console.log('break')
-                    break;            
-                }
-                saved = repetitiveString;   
-                pointer++; 
-
-            }
+    for(let i = 0; i < planConfig.length; i++) {
+        if(planConfig[i] !== displayStr[i % displayStr.length]) {
+            return -1;
         }
-        return saved;
-
     }
 
-    let value = findSmallestString(displayStr);
+    let saved = ''
+    for(let i = 0; i < displayStr.length; i++) {
+        let repetitiveString = displayStr.slice(0,i); // b bc bcd
+        let pointer = i; // 1
+        while(pointer < displayStr.length && repetitiveString !== '') {
+            if(repetitiveString !== displayStr.slice(pointer, pointer + i)) {
+                break;            
+            }
+            saved = repetitiveString;   
+            pointer++; 
+        }
+    }
 
-    return value.length;
+    return saved.length;
 
 }
 
-//console.log(calculateSmallestString("bcdbcdbcdbcd", "bcdbcd"));
+console.log(calculateSmallestString("bcdbcdbcdbcd", "bcdbcd"));
 //console.log(calculateSmallestString("BCDBCDBCDBCDBCD", "BCDBCD"));
 //console.log(calculateSmallestString("ABABAB", "ABAB"));
-console.log(calculateSmallestString("TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX", "TAUXXTAUXXTAUXXTAUXXTAUXX"));
+//console.log(calculateSmallestString("TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX", "TAUXXTAUXXTAUXXTAUXXTAUXX"));
 // calculateSmallestString("LEET", "CODE")
-// calculateSmallestString("AAAAAAAAA", "AAACCC")
-console.log(calculateSmallestString("wqzpuogsqcxpqizenbrhcbijieufuxgqpfijuobkqacjkdnzggijhqurwqyrnejckrnghqsyswhczwdicltjdndaebrtgcysulydcsbupkzogewkqpwtfzvjameircaloaqstsoiepynuvxmmthrsdcvrhdijgvzgmtzeijkzixtfxhrqpllspijwnsitnjazdwqzpuogsqcxpqizenbrhcbijieufuxgqpfijuobkqacjkdnzggijhqurwqyrnejckrnghqsyswhczwdicltjdndaebrtgcysulydcsbupkzogewkqpwtfzvjameircaloaqstsoiepynuvxmmthrsdcvrhdijgvzgmtzeijkzixtfxhrqpllspijwnsitnjazdwqzpuogsqcxpqizenbrhcbijieufuxgqpfijuobkqacjkdnzggijhqurwqyrnejckrnghqsyswhczwdicltjdndaebrtgcysulydcsbupkzogewkqpwtfzvjameircaloaqstsoiepynuvxmmthrsdcvrhdijgvzgmtzeijkzixtfxhrqpllspijwnsitnjazdwqzpuogsqcxpqizenbrhcbijieufuxgqpfijuobkqacjkdnzggijhqurwqyrnejckrnghqsyswhczwdicltjdndaebrtgcysulydcsbupkzogewkqpwtfzvjameircaloaqstsoiepynuvxmmthrsdcvrhdijgvzgmtzeijkzixtfxhrqpllspijwnsitnjazd", "wqzpuogsqcxpqizenbrhcbijieufuxgqpfijuobkqacjkdnzggijhqurwqyrnejckrnghqsyswhczwdicltjdndaebrtgcysulydcsbupkzogewkqpwtfzvjameircaloaqstsoiepynuvxmmthrsdcvrhdijgvzgmtzeijkzixtfxhrqpllspijwnsitnjazdwqzpuogsqcxpqizenbrhcbijieufuxgqpfijuobkqacjkdnzggijhqurwqyrnejckrnghqsyswhczwdicltjdndaebrtgcysulydcsbupkzogewkqpwtfzvjameircaloaqstsoiepynuvxmmthrsdcvrhdijgvzgmtzeijkzixtfxhrqpllspijwnsitnjazd"));
+console.log(calculateSmallestString("AAACCC", "AAA"));
+//console.log(calculateSmallestString("wqzpuogsqcxpqizenbrhcbijieufuxgqpfijuobkqacjkdnzggijhqurwqyrnejckrnghqsyswhczwdicltjdndaebrtgcysulydcsbupkzogewkqpwtfzvjameircaloaqstsoiepynuvxmmthrsdcvrhdijgvzgmtzeijkzixtfxhrqpllspijwnsitnjazdwqzpuogsqcxpqizenbrhcbijieufuxgqpfijuobkqacjkdnzggijhqurwqyrnejckrnghqsyswhczwdicltjdndaebrtgcysulydcsbupkzogewkqpwtfzvjameircaloaqstsoiepynuvxmmthrsdcvrhdijgvzgmtzeijkzixtfxhrqpllspijwnsitnjazdwqzpuogsqcxpqizenbrhcbijieufuxgqpfijuobkqacjkdnzggijhqurwqyrnejckrnghqsyswhczwdicltjdndaebrtgcysulydcsbupkzogewkqpwtfzvjameircaloaqstsoiepynuvxmmthrsdcvrhdijgvzgmtzeijkzixtfxhrqpllspijwnsitnjazdwqzpuogsqcxpqizenbrhcbijieufuxgqpfijuobkqacjkdnzggijhqurwqyrnejckrnghqsyswhczwdicltjdndaebrtgcysulydcsbupkzogewkqpwtfzvjameircaloaqstsoiepynuvxmmthrsdcvrhdijgvzgmtzeijkzixtfxhrqpllspijwnsitnjazd", "wqzpuogsqcxpqizenbrhcbijieufuxgqpfijuobkqacjkdnzggijhqurwqyrnejckrnghqsyswhczwdicltjdndaebrtgcysulydcsbupkzogewkqpwtfzvjameircaloaqstsoiepynuvxmmthrsdcvrhdijgvzgmtzeijkzixtfxhrqpllspijwnsitnjazdwqzpuogsqcxpqizenbrhcbijieufuxgqpfijuobkqacjkdnzggijhqurwqyrnejckrnghqsyswhczwdicltjdndaebrtgcysulydcsbupkzogewkqpwtfzvjameircaloaqstsoiepynuvxmmthrsdcvrhdijgvzgmtzeijkzixtfxhrqpllspijwnsitnjazd"));
