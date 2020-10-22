@@ -16,3 +16,7 @@ const substringKDistinctChars = (str, k) => {
 
     return res
 }
+
+substringKDistinctChars("awaglk", 4)
+substringKDistinctChars("democracy", 5)
+substringKDistinctChars("wawaglknagagwunagkwkwagl", 4)
