@@ -76,7 +76,7 @@ class Node {
     if (root.value === x)
       return 0
     else if (root.value > x)
-      return distanceBetween2traverse(root.left, x) + 1
+      return distanceFromRoot(root.left, x) + 1
     return distanceFromRoot(root.right, x) + 1
   }
   
